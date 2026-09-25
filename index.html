@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark" style="color-scheme: dark;"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>فروشگاه موبایل یزدانی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F6F3; --surface:#FFFFFF; --ink:#201F1D; --muted:#5F5D62; --line:#E5E1DA;
+    --accent:#1C1C1E; --accent-soft:#F1EFEA; --accent-ink:#1C1C1E;
+    --site:#2958AC; --site-soft:#E9EEF6; --site-ink:#19366A;
+    --cart:#2E9E5B; --cart-ink:#1F6E40;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --bg:#111113; --surface:#1B1B1E; --ink:#F2F1EF; --muted:#AFAAB0; --line:#2C2C30; --site-soft:#132747; --site-ink:#7392C9; }
+  }
+  :root[data-theme="dark"]{ --bg:#111113; --surface:#1B1B1E; --ink:#F2F1EF; --muted:#AFAAB0; --line:#2C2C30; --site-soft:#132747; --site-ink:#7392C9; }
+  html{scroll-padding-top:env(safe-area-inset-top,0px); height:100%;}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Vazirmatn', sans-serif; background:var(--bg); color:var(--ink); min-height:100%; line-height:1.6;}
+
+  header.hero{padding:2rem 1.4rem 0; text-align:center;}
+  .logo-row{display:flex; flex-direction:column; align-items:center; gap:.5rem;}
+  .logo-row img{width:64px; height:auto;}
+  .wordmark{font-size:1.15rem; font-weight:800; color:var(--site-ink);}
+  h1{font-size:clamp(1.5rem,4.6vw,2rem); font-weight:900; letter-spacing:-.02em; margin-top:.9rem;}
+  .hero p{max-width:32em; margin:.6rem auto 0; color:var(--muted); font-size:.92rem;}
+
+  .trustbar{max-width:920px; margin:1.3rem auto 0; padding:.2rem 1.2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem;}
+  .trust-item{display:flex; flex-direction:column; align-items:center; gap:.35rem; padding:.7rem .3rem; background:var(--site-soft); border-radius:14px;}
+  .trust-item svg{width:20px; height:20px; color:var(--site);}
+  .trust-item span{font-size:.7rem; font-weight:600; color:var(--site-ink); text-align:center;}
+
+  .toolbar{max-width:920px; margin:1.4rem auto 0; padding:0 1.2rem; display:flex; gap:.55rem; flex-wrap:wrap; align-items:center;}
+  .search-box{flex:1 1 200px; position:relative;}
+  .search-box input{width:100%; font-family:inherit; font-size:.86rem; padding-block:.62rem; padding-inline-start:2.3rem; padding-inline-end:1rem; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink);}
+  .search-box svg{position:absolute; inset-inline-start:.75rem; top:50%; translate:0 -50%; width:16px; height:16px; color:var(--muted);}
+  select.sortsel{font-family:inherit; font-size:.82rem; padding:.6rem .8rem; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink);}
+  .memchips{max-width:920px; margin:.6rem auto 0; padding:0 1.2rem; display:flex; gap:.4rem; flex-wrap:wrap;}
+  .memchip{font-family:inherit; font-size:.76rem; font-weight:600; padding:.35rem .8rem; border-radius:999px; border:1.5px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer;}
+  .memchip[aria-pressed="true"]{background:var(--site); color:#fff; border-color:var(--site);}
+
+  .bestsellers{max-width:920px; margin:1.5rem auto 0; padding:0 1.2rem;}
+  .bestsellers h2{font-size:.95rem; font-weight:800; margin-bottom:.7rem;}
+  .bs-row{display:flex; gap:.8rem; overflow-x:auto; padding-bottom:.3rem; scrollbar-width:none;}
+  .bs-row::-webkit-scrollbar{display:none;}
+  .bs-card{flex:none; width:150px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:.8rem; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;}
+  .bs-card:hover{transform:translateY(-3px); box-shadow:0 10px 22px rgba(0,0,0,.09);}
+  .bs-card .bs-badge{font-size:.62rem; font-weight:700; color:var(--site); margin-bottom:.3rem;}
+  .bs-card .bs-name{font-size:.8rem; font-weight:700; margin-top:.4rem;}
+  .bs-card .bs-price{font-size:.74rem; color:var(--muted); margin-top:.2rem;}
+
+  nav.tabs{
+    position:sticky; top:0; z-index:5; background:var(--bg);
+    display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap;
+    padding:1.4rem 1rem 1rem; border-bottom:1px solid var(--line); margin-top:1.6rem;
+  }
+  nav.tabs button{
+    font-family:inherit; font-size:.88rem; font-weight:600; color:var(--muted);
+    background:var(--surface); border:1px solid var(--line); border-radius:999px;
+    padding:.5rem 1.1rem; cursor:pointer; display:flex; align-items:center; gap:.45rem;
+  }
+  nav.tabs button .dot{width:.55rem; height:.55rem; border-radius:50%; border:1px solid rgba(0,0,0,.18);}
+  nav.tabs button{border-width:1.5px;}
+  nav.tabs button[aria-selected="true"]{color:#fff; border-color:transparent; box-shadow:0 2px 10px rgba(0,0,0,.18);}
+  nav.tabs button[data-white="true"][aria-selected="true"]{border-color:#D8D8DA; box-shadow:0 1px 6px rgba(0,0,0,.12);}
+
+  main{max-width:920px; margin:0 auto; padding:1.6rem 1.2rem 3rem;}
+  .grid{display:grid; grid-template-columns:1fr; gap:1.1rem;}
+  @media(min-width:680px){ .grid{grid-template-columns:1fr 1fr;} }
+  .panel{display:none;}
+  .panel.active{display:block;}
+
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:20px; overflow:hidden; display:flex; flex-direction:column; transition:transform .18s ease, box-shadow .18s ease;}
+  .card:hover{transform:translateY(-3px); box-shadow:0 12px 26px rgba(0,0,0,.1);}
+  .visual{position:relative; height:108px; display:flex; align-items:center; justify-content:center;}
+  .visual svg{height:88px;}
+  .badges{position:absolute; top:.55rem; inset-inline-start:.55rem; display:flex; gap:.3rem; flex-wrap:wrap;}
+  .badge{font-size:.62rem; font-weight:800; padding:.2rem .55rem; border-radius:999px; color:#fff;}
+  .badge.best{background:#A9631C;} .badge.new{background:#2C7A55;} .badge.sale{background:#B5382B;}
+
+  .card-body{padding:1.1rem 1.2rem 1.05rem; display:flex; flex-direction:column; gap:.8rem;}
+  .card-title{font-size:1.05rem; font-weight:700;}
+  .card-spec{font-size:.78rem; color:var(--muted); margin-top:.15rem;}
+  table{width:100%; border-collapse:collapse; font-size:.85rem;}
+  th{text-align:right; font-weight:600; color:var(--muted); font-size:.72rem; padding:.35rem .4rem; border-bottom:1px solid var(--line);}
+  td{padding:.5rem .4rem; border-bottom:1px solid var(--line); vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  tr.hidden-row{display:none;}
+  .price{font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums; color:var(--ink); letter-spacing:-.01em;}
+  .price small{font-weight:500; color:var(--muted); font-size:.7rem;}
+  .price.na{color:var(--muted); font-weight:600; font-size:.76rem;}
+  .swatch{display:inline-block; width:.58rem; height:.58rem; border-radius:50%; margin-inline-start:.35rem; border:1px solid rgba(0,0,0,.15); vertical-align:middle;}
+  .tag{display:inline-flex; align-items:center; gap:.2rem; font-size:.64rem; padding:.15rem .5rem; border-radius:999px; white-space:nowrap; border:1px solid var(--line); background:var(--accent-soft); color:var(--muted);}
+  .tag svg{width:10px; height:10px;}
+  footer{max-width:920px; margin:0 auto; padding:1.4rem 1.2rem 2.4rem; color:var(--muted); font-size:.8rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; border-top:1px solid var(--line);}
+  .phone-link{color:inherit; text-decoration:none; border-bottom:1px dashed var(--muted); cursor:pointer; transition:color .12s ease;}
+  .phone-link:hover, .phone-link:active{color:var(--cart);}
+
+  .add-btn{
+    font-family:inherit; font-size:1rem; font-weight:700; line-height:1;
+    width:2rem; height:2rem; border-radius:50%; border:1px solid var(--line);
+    background:var(--surface); color:var(--ink); cursor:pointer; transition:transform .12s ease, background .12s ease;
+  }
+  .add-btn:disabled{opacity:.35; cursor:not-allowed;}
+  .add-btn:not(:disabled):hover{background:var(--cart); color:#fff; border-color:var(--cart);}
+  .add-btn:not(:disabled):active{transform:scale(.94);}
+
+  .cart-fab{
+    position:fixed; bottom:calc(1.2rem + env(safe-area-inset-bottom,0px)); left:1.2rem; z-index:20;
+    background:var(--cart); color:#fff; border:none; border-radius:999px;
+    padding:.8rem 1.3rem; font-family:inherit; font-size:.9rem; font-weight:700;
+    display:flex; align-items:center; gap:.5rem; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,.2);
+  }
+  .cart-fab .count{
+    background:#fff; color:var(--cart); border-radius:999px; min-width:1.4rem; height:1.4rem;
+    display:inline-flex; align-items:center; justify-content:center; font-size:.75rem; padding:0 .3rem;
+  }
+  .cart-fab[hidden]{display:none;}
+
+  .toast{
+    position:fixed; bottom:calc(5.4rem + env(safe-area-inset-bottom,0px)); left:50%; translate:-50% 0; z-index:40;
+    background:var(--ink); color:var(--bg); font-size:.82rem; font-weight:600; padding:.65rem 1.1rem;
+    border-radius:999px; opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease;
+    display:flex; align-items:center; gap:.4rem; white-space:nowrap; box-shadow:0 10px 24px rgba(0,0,0,.22);
+  }
+  .toast svg{width:15px; height:15px; color:#3D8B5F;}
+  .toast.show{opacity:1; transform:translate(-50%,-4px);}
+
+  .cart-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:30; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+  .cart-backdrop.open{opacity:1; pointer-events:auto;}
+  .cart-drawer{
+    position:fixed; top:0; bottom:0; right:0; width:min(380px, 92vw); z-index:31;
+    background:var(--surface); border-inline-start:1px solid var(--line);
+    display:flex; flex-direction:column; transform:translateX(100%); transition:transform .22s ease;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-head{padding:1.2rem 1.2rem .8rem; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line);}
+  .cart-head h2{font-size:1.05rem; font-weight:800;}
+  .cart-close{background:none; border:none; font-size:1.3rem; color:var(--muted); cursor:pointer; line-height:1;}
+  .cart-items{flex:1; overflow-y:auto; padding:.6rem 1.2rem;}
+  .cart-empty{color:var(--muted); font-size:.88rem; text-align:center; padding:2.4rem 0;}
+  .cart-item{display:flex; justify-content:space-between; align-items:center; gap:.6rem; padding:.8rem 0; border-bottom:1px solid var(--line);}
+  .cart-item .ci-name{font-size:.85rem; font-weight:600;}
+  .cart-item .ci-price{font-size:.76rem; color:var(--muted); margin-top:.15rem;}
+  .qty{display:flex; align-items:center; gap:.5rem;}
+  .qty button{width:1.6rem; height:1.6rem; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:.9rem; cursor:pointer;}
+  .qty span{min-width:1.1rem; text-align:center; font-size:.85rem;}
+  .cart-foot{padding:1rem 1.2rem calc(1.2rem + env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line);}
+  .cart-total{display:flex; justify-content:space-between; font-weight:800; font-size:1rem; margin-bottom:.9rem;}
+  .checkout-btn{ width:100%; padding:.85rem; border-radius:12px; border:none; background:#25D366; color:#fff; font-family:inherit; font-size:.92rem; font-weight:700; cursor:pointer; }
+  .checkout-btn:disabled{opacity:.4; cursor:not-allowed;}
+
+  .admin-btn{background:none; border:none; font-size:.95rem; cursor:pointer; color:var(--muted); padding:0; opacity:.55;}
+  .admin-btn:hover{opacity:1;}
+  .pwd-box{
+    position:fixed; top:50%; left:50%; translate:-50% -50%; z-index:51; width:min(300px, 86vw);
+    background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:1.3rem 1.2rem;
+    opacity:0; pointer-events:none; transition:opacity .18s ease, translate .18s ease; box-shadow:0 20px 50px rgba(0,0,0,.25);
+  }
+  .pwd-box.open{opacity:1; pointer-events:auto; translate:-50% -55%;}
+  .pwd-box h3{font-size:.95rem; font-weight:800; margin-bottom:.9rem; text-align:center;}
+  .pwd-box input{width:100%; font-family:inherit; font-size:.9rem; padding:.65rem .8rem; border-radius:10px; border:1.5px solid var(--line); background:var(--bg); color:var(--ink); text-align:center;}
+  .pwd-actions{display:flex; gap:.5rem; margin-top:1rem;}
+  .pwd-actions button{flex:1; font-family:inherit; font-size:.84rem; font-weight:700; padding:.6rem; border-radius:10px; cursor:pointer;}
+  .pwd-cancel{background:var(--accent-soft); border:1px solid var(--line); color:var(--muted);}
+  .pwd-submit{background:var(--cart); border:none; color:#fff;}
+  .admin-overlay{
+    position:fixed; inset:0; z-index:50; background:var(--bg);
+    display:flex; flex-direction:column; transform:translateY(100%); transition:transform .22s ease;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  .admin-overlay.open{transform:translateY(0);}
+  .admin-head{padding:1rem 1.2rem; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); background:var(--surface);}
+  .admin-head h2{font-size:1.05rem; font-weight:800;}
+  .admin-body{flex:1; overflow-y:auto; padding:.4rem 1.2rem 1rem;}
+  .admin-brand-title{font-weight:800; font-size:1rem; margin:1.2rem 0 .3rem; color:var(--cart-ink);}
+  .admin-model-title{font-weight:700; font-size:.82rem; margin:.7rem 0 .2rem; color:var(--muted);}
+  .admin-row{display:flex; justify-content:space-between; align-items:center; gap:.6rem; padding:.5rem 0; border-bottom:1px solid var(--line);}
+  .admin-row .arow-label{font-size:.8rem;}
+  .admin-row input{width:110px; font-family:inherit; font-size:.85rem; padding:.4rem .5rem; border-radius:8px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); text-align:center;}
+  .admin-foot{padding:1rem 1.2rem calc(1.2rem + env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line); background:var(--surface);}
+  .admin-note{font-size:.72rem; color:var(--muted); text-align:center; margin-top:.5rem;}
+
+  .addphone-toggle{width:100%; font-family:inherit; font-size:.85rem; font-weight:700; padding:.7rem; border-radius:12px; border:1.5px dashed var(--site); background:var(--site-soft); color:var(--site-ink); cursor:pointer; margin:.8rem 1.2rem 0; width:calc(100% - 2.4rem);}
+  .addphone-form{display:none; padding:.9rem 1.2rem 1rem; margin:.6rem 1.2rem 0; background:var(--accent-soft); border-radius:14px; border:1px solid var(--line);}
+  .addphone-form.open{display:block;}
+  .addphone-form label{display:block; font-size:.72rem; color:var(--muted); font-weight:600; margin:.55rem 0 .25rem;}
+  .addphone-form select, .addphone-form input{width:100%; font-family:inherit; font-size:.85rem; padding:.55rem .6rem; border-radius:9px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink);}
+  .variant-row{display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:.4rem; margin-top:.5rem; align-items:center;}
+  .variant-row input{padding:.5rem .4rem; font-size:.78rem;}
+  .variant-row .rm-variant{width:1.7rem; height:1.7rem; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--muted); font-size:.85rem; cursor:pointer; flex:none;}
+  .add-variant-btn{font-family:inherit; font-size:.76rem; font-weight:600; color:var(--site); background:none; border:none; padding:.6rem 0 .1rem; cursor:pointer;}
+  .addphone-submit{width:100%; margin-top:.9rem; padding:.7rem; border-radius:10px; border:none; background:var(--cart); color:#fff; font-family:inherit; font-size:.85rem; font-weight:700; cursor:pointer;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="logo-row">
+    <img src="data:image/png;base64,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" alt="یزدانی">
+    <div class="wordmark">فروشگاه موبایل یزدانی</div>
+  </div>
+  <h1>گوشی موردنظرتون رو انتخاب کنید</h1>
+  <p>قیمت و موجودی لحظه‌ای — بروزرسانی <span id="lastUpdate">1405/07/02</span>.</p>
+</header>
+
+<div class="trustbar">
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.6"></path><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>ضمانت اصالت کالا</span></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h11v8H3z" stroke="currentColor" stroke-width="1.6"></path><path d="M14 10h3l3 3v2h-6z" stroke="currentColor" stroke-width="1.6"></path><circle cx="7" cy="17" r="1.6" stroke="currentColor" stroke-width="1.4"></circle><circle cx="17" cy="17" r="1.6" stroke="currentColor" stroke-width="1.4"></circle></svg><span>ارسال سریع</span></div>
+  <div class="trust-item"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l1.6 4-2 1.4a11 11 0 005 5l1.4-2 4 1.6v3a2 2 0 01-2.2 2A16 16 0 015 6.2 2 2 0 015 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path></svg><span>پشتیبانی تلفنی</span></div>
+</div>
+
+<div id="bestsellers" class="bestsellers"><h2>پیشنهاد ویژه</h2><div class="bs-row" id="bsRow"><div class="bs-card"><div class="bs-badge">پرفروش</div><div class="card-spec" style="font-size:.68rem">اپل</div><div class="bs-name">iPhone 17 Pro Max</div><div class="bs-price">از 338,100,000 تومان</div></div><div class="bs-card"><div class="bs-badge">پرفروش</div><div class="card-spec" style="font-size:.68rem">سامسونگ</div><div class="bs-name">Galaxy S26 Ultra</div><div class="bs-price">از 217,875,000 تومان</div></div><div class="bs-card"><div class="bs-badge">پرفروش</div><div class="card-spec" style="font-size:.68rem">شیائومی</div><div class="bs-name">POCO X7 Pro / Mi 15T</div><div class="bs-price">از 112,350,000 تومان</div></div></div></div>
+
+<div class="toolbar">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"></circle><path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+    <input id="searchInput" type="text" placeholder="جستجوی مدل...">
+  </div>
+  <select class="sortsel" id="sortSel">
+    <option value="default">مرتب‌سازی پیش‌فرض</option>
+    <option value="asc">ارزان‌ترین</option>
+    <option value="desc">گران‌ترین</option>
+  </select>
+</div>
+<div class="memchips" id="memChips">
+  <button class="memchip" data-mem="all" aria-pressed="true">همه حافظه‌ها</button>
+  <button class="memchip" data-mem="low" aria-pressed="false">تا ۱۲۸GB</button>
+  <button class="memchip" data-mem="mid" aria-pressed="false">۲۵۶GB</button>
+  <button class="memchip" data-mem="high" aria-pressed="false">۵۱۲GB به بالا</button>
+</div>
+
+<nav class="tabs" id="tabs"><button aria-selected="true" style="background: rgb(20, 40, 160); color: rgb(255, 255, 255); border-color: rgb(20, 40, 160);"><span class="dot" style="background:#fff"></span>سامسونگ</button><button aria-selected="false"><span class="dot" style="background:#F4511E"></span>شیائومی</button><button aria-selected="false" data-white="true"><span class="dot" style="background:#FFFFFF"></span>اپل</button></nav>
+<main><div id="panels"><div class="panel active" id="panel-samsung"><div class="grid"><div class="card" data-minprice="182175000" data-name="سامسونگ galaxy s25 fe">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy S25 FE</div><div class="card-spec">پرچم‌دار — Dynamic AMOLED 2X، دوربین حرفه‌ای</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، سرمه‌ای<span class="swatch" style="background:#2E3A5C"></span></td><td class="price">182,175,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>ویتام</span></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-0-0&quot;, &quot;سامسونگ Galaxy S25 FE — ۲۵۶/۸ (Blk&amp;Navi)&quot;, 182175000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>سفید<span class="swatch" style="background:#F1F1F1"></span>، آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">186,375,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>ویتام</span></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-0-1&quot;, &quot;سامسونگ Galaxy S25 FE — ۲۵۶/۸ (W&amp;Blue)&quot;, 186375000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="217875000" data-name="سامسونگ galaxy s26 ultra">
+        <div class="visual" style="background:#E7EAF7">
+          <div class="badges"><span class="badge best">پرفروش</span><span class="badge sale">تخفیف‌خورده</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy S26 Ultra</div><div class="card-spec">پرچم‌دار برتر — Dynamic AMOLED 2X، S Pen داخلی</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>۲۵۶/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">383,250,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>ویتام</span></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-1-0&quot;, &quot;سامسونگ Galaxy S26 Ultra — ۲۵۶/۱۲ (Blk)&quot;, 383250000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">217,875,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>بی‌کد</span></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-1-1&quot;, &quot;سامسونگ Galaxy S26 Ultra — ۲۵۶/۱۲ (Blk&amp;W)&quot;, 217875000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="36530000" data-name="سامسونگ galaxy a07">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A07</div><div class="card-spec">۶.۷ اینچ، دوربین ۵۰MP، باتری ۵۰۰۰mAh — اقتصادی‌ترین سری A</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۶۴/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، بنفش<span class="swatch" style="background:#8E7CC3"></span></td><td class="price">36,740,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-2-0&quot;, &quot;سامسونگ Galaxy A07 — ۶۴/۴ (Blk&amp;V)&quot;, 36740000)">+</button></td></tr><tr data-cap="low"><td>۶۴/۴</td><td>سبز<span class="swatch" style="background:#5C8A63"></span></td><td class="price">36,530,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-2-1&quot;, &quot;سامسونگ Galaxy A07 — ۶۴/۴ (Green)&quot;, 36530000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">40,835,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-2-2&quot;, &quot;سامسونگ Galaxy A07 — ۱۲۸/۴ (Blk)&quot;, 40835000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۴</td><td>سبز<span class="swatch" style="background:#5C8A63"></span>، بنفش<span class="swatch" style="background:#8E7CC3"></span></td><td class="price">40,520,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-2-3&quot;, &quot;سامسونگ Galaxy A07 — ۱۲۸/۴ (Green&amp;V)&quot;, 40520000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۶</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">46,085,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-2-4&quot;, &quot;سامسونگ Galaxy A07 — ۱۲۸/۶ (Blk)&quot;, 46085000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۶</td><td>بنفش<span class="swatch" style="background:#8E7CC3"></span></td><td class="price">45,875,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-2-5&quot;, &quot;سامسونگ Galaxy A07 — ۱۲۸/۶ (V)&quot;, 45875000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۶</td><td>سبز<span class="swatch" style="background:#5C8A63"></span></td><td class="price">47,145,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-2-6&quot;, &quot;سامسونگ Galaxy A07 — ۱۲۸/۶ (Green)&quot;, 47145000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="47040000" data-name="سامسونگ galaxy a16">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A16</div><div class="card-spec">۶.۷ اینچ AMOLED، دوربین ۵۰MP، باتری ۵۰۰۰mAh</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، طوسی<span class="swatch" style="background:#9AA0AC"></span></td><td class="price">47,040,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-3-0&quot;, &quot;سامسونگ Galaxy A16 — ۱۲۸/۴ (Blk&amp;Gry)&quot;, 47040000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="50705000" data-name="سامسونگ galaxy a17">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A17</div><div class="card-spec">AMOLED ۹۰Hz، دوربین سه‌گانه ۵۰MP، باتری ۵۰۰۰mAh</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">50,915,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-4-0&quot;, &quot;سامسونگ Galaxy A17 — ۱۲۸/۴ (Blk)&quot;, 50915000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۴</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span>، طوسی<span class="swatch" style="background:#9AA0AC"></span></td><td class="price">50,705,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-4-1&quot;, &quot;سامسونگ Galaxy A17 — ۱۲۸/۴ (Blu&amp;Gry)&quot;, 50705000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۶</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">61,100,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-4-2&quot;, &quot;سامسونگ Galaxy A17 — ۱۲۸/۶ (Blk)&quot;, 61100000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، طوسی<span class="swatch" style="background:#9AA0AC"></span></td><td class="price">78,530,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-4-3&quot;, &quot;سامسونگ Galaxy A17 — ۲۵۶/۸ (Blk&amp;Gry)&quot;, 78530000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">78,005,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-4-4&quot;, &quot;سامسونگ Galaxy A17 — ۲۵۶/۸ (Blue)&quot;, 78005000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="67400000" data-name="سامسونگ galaxy a26 5g">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A26 5G</div><div class="card-spec">AMOLED، ۵G، دوربین ۵۰MP OIS، باتری ۵۰۰۰mAh</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸/۶</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">67,400,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-5-0&quot;, &quot;سامسونگ Galaxy A26 5G — ۱۲۸/۶ (Blk)&quot;, 67400000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۶</td><td>صورتی<span class="swatch" style="background:#E3A9C0"></span>، سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">68,240,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-5-1&quot;, &quot;سامسونگ Galaxy A26 5G — ۱۲۸/۶ (Pink&amp;W)&quot;, 68240000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">86,520,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-5-2&quot;, &quot;سامسونگ Galaxy A26 5G — ۲۵۶/۸ (Blk)&quot;, 86520000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="77910000" data-name="سامسونگ galaxy a27 5g">
+        <div class="visual" style="background:#E7EAF7">
+          <div class="badges"><span class="badge new">جدید</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A27 5G</div><div class="card-spec">AMOLED، تراشه Exynos، دوربین ۵۰MP</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸/۶</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">77,910,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-6-0&quot;, &quot;سامسونگ Galaxy A27 5G — ۱۲۸/۶ (Blk)&quot;, 77910000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، صورتی<span class="swatch" style="background:#E3A9C0"></span></td><td class="price">98,910,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-6-1&quot;, &quot;سامسونگ Galaxy A27 5G — ۲۵۶/۸ (Blk&amp;Pink)&quot;, 98910000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="86625000" data-name="سامسونگ galaxy a36 5g">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A36 5G</div><div class="card-spec">IP67، دوربین ۵۰MP OIS، باتری ۵۰۰۰mAh</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">86,625,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-7-0&quot;, &quot;سامسونگ Galaxy A36 5G — ۱۲۸/۸ (Blk)&quot;, 86625000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">98,175,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-7-1&quot;, &quot;سامسونگ Galaxy A36 5G — ۲۵۶/۸ (Blk)&quot;, 98175000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>زرد<span class="swatch" style="background:#E8D26A"></span></td><td class="price">96,810,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-7-2&quot;, &quot;سامسونگ Galaxy A36 5G — ۲۵۶/۸ (Yellw)&quot;, 96810000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="91875000" data-name="سامسونگ galaxy a37 5g">
+        <div class="visual" style="background:#E7EAF7">
+          <div class="badges"><span class="badge new">جدید</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A37 5G</div><div class="card-spec">AMOLED ۱۲۰Hz، دوربین ۵۰MP OIS، شارژ سریع</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">93,135,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-8-0&quot;, &quot;سامسونگ Galaxy A37 5G — ۱۲۸/۸ (Blk)&quot;, 93135000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۸</td><td>سفید<span class="swatch" style="background:#F1F1F1"></span>، بنفش<span class="swatch" style="background:#8E7CC3"></span></td><td class="price">91,875,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-8-1&quot;, &quot;سامسونگ Galaxy A37 5G — ۱۲۸/۸ (W&amp;V)&quot;, 91875000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">103,845,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-8-2&quot;, &quot;سامسونگ Galaxy A37 5G — ۲۵۶/۸ (Blk&amp;W)&quot;, 103845000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>سبز<span class="swatch" style="background:#5C8A63"></span>، بنفش<span class="swatch" style="background:#8E7CC3"></span></td><td class="price">101,745,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-8-3&quot;, &quot;سامسونگ Galaxy A37 5G — ۲۵۶/۸ (Green&amp;V)&quot;, 101745000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">108,045,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-8-4&quot;, &quot;سامسونگ Galaxy A37 5G — ۲۵۶/۱۲ (Blk)&quot;, 108045000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="97965000" data-name="سامسونگ galaxy a56 5g">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A56 5G</div><div class="card-spec">بدنه فلزی، دوربین ۵۰MP OIS، AMOLED ۱۲۰Hz</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">99,225,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-9-0&quot;, &quot;سامسونگ Galaxy A56 5G — ۱۲۸/۸ (Blk)&quot;, 99225000)">+</button></td></tr><tr data-cap="low"><td>۱۲۸/۸</td><td>سبز<span class="swatch" style="background:#5C8A63"></span></td><td class="price">97,965,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-9-1&quot;, &quot;سامسونگ Galaxy A56 5G — ۱۲۸/۸ (Green)&quot;, 97965000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">114,345,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-9-2&quot;, &quot;سامسونگ Galaxy A56 5G — ۲۵۶/۸ (Blk)&quot;, 114345000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۱۲</td><td>سبز<span class="swatch" style="background:#5C8A63"></span></td><td class="price">131,250,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-9-3&quot;, &quot;سامسونگ Galaxy A56 5G — ۲۵۶/۱۲ (Green)&quot;, 131250000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۱۲</td><td>طوسی<span class="swatch" style="background:#9AA0AC"></span></td><td class="price">124,950,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-9-4&quot;, &quot;سامسونگ Galaxy A56 5G — ۲۵۶/۱۲ (Gry)&quot;, 124950000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="131775000" data-name="سامسونگ galaxy a57 5g">
+        <div class="visual" style="background:#E7EAF7">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1428A0" stroke-width="2.4"></rect>
+    <circle cx="54" cy="11" r="3.4" fill="#1428A0"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Galaxy A57 5G</div><div class="card-spec">بالاترین رده سری A، LTPO AMOLED</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>۲۵۶/۸</td><td>طوسی<span class="swatch" style="background:#9AA0AC"></span></td><td class="price">133,875,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-10-0&quot;, &quot;سامسونگ Galaxy A57 5G — ۲۵۶/۸ (Gry)&quot;, 133875000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۸</td><td>یاسی<span class="swatch" style="background:#B9A8D6"></span>، سرمه‌ای<span class="swatch" style="background:#2E3A5C"></span></td><td class="price">131,775,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-10-1&quot;, &quot;سامسونگ Galaxy A57 5G — ۲۵۶/۸ (Lav&amp;Navi)&quot;, 131775000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶/۱۲</td><td>طوسی<span class="swatch" style="background:#9AA0AC"></span></td><td class="price">141,645,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;samsung-10-2&quot;, &quot;سامسونگ Galaxy A57 5G — ۲۵۶/۱۲ (Gry)&quot;, 141645000)">+</button></td></tr></tbody>
+          </table>
+        </div></div></div></div><div class="panel" id="panel-xiaomi"><div class="grid"><div class="card" data-minprice="38430000" data-name="شیائومی redmi a3 / a5">
+        <div class="visual" style="background:#FFE6D9">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#F4511E" stroke-width="2.4"></rect>
+    <rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="#F4511E" stroke-width="2.4"></rect><circle cx="75.5" cy="12" r="1.6" fill="#F4511E"></circle><circle cx="80.5" cy="12" r="1.6" fill="#F4511E"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Redmi A3 / A5</div><div class="card-spec">سری اقتصادی — نمایشگر ۶.۷، باتری ۵۰۰۰mAh</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>A3 — ۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">38,745,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-0-0&quot;, &quot;شیائومی Redmi A3 / A5 — A3 — ۱۲۸/۴ (Blk)&quot;, 38745000)">+</button></td></tr><tr data-cap="low"><td>A3 — ۱۲۸/۴</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">38,430,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-0-1&quot;, &quot;شیائومی Redmi A3 / A5 — A3 — ۱۲۸/۴ (Blue)&quot;, 38430000)">+</button></td></tr><tr data-cap="low"><td>A5 — ۶۴/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، طلایی<span class="swatch" style="background:#C9A24B"></span></td><td class="price na">ناموجود</td><td><button class="add-btn" disabled="" onclick="addToCart(&quot;xiaomi-0-2&quot;, &quot;شیائومی Redmi A3 / A5 — A5 — ۶۴/۴ (Blk&amp;Gold)&quot;, 0)">—</button></td></tr><tr data-cap="low"><td>A5 — ۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، سبز<span class="swatch" style="background:#5C8A63"></span></td><td class="price">43,470,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-0-3&quot;, &quot;شیائومی Redmi A3 / A5 — A5 — ۱۲۸/۴ (Blk&amp;Green)&quot;, 43470000)">+</button></td></tr><tr data-cap="low"><td>A5 — ۱۲۸/۴</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span>، طلایی<span class="swatch" style="background:#C9A24B"></span></td><td class="price">43,050,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-0-4&quot;, &quot;شیائومی Redmi A3 / A5 — A5 — ۱۲۸/۴ (Blue&amp;Gold)&quot;, 43050000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="39795000" data-name="شیائومی poco c-series">
+        <div class="visual" style="background:#FFE6D9">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#F4511E" stroke-width="2.4"></rect>
+    <rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="#F4511E" stroke-width="2.4"></rect><circle cx="75.5" cy="12" r="1.6" fill="#F4511E"></circle><circle cx="80.5" cy="12" r="1.6" fill="#F4511E"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">POCO C-series</div><div class="card-spec">C71 / C81 Pro / C85 — نمایشگر ۹۰Hz، باتری ۵۰۰۰mAh</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>C71 — ۶۴/۳</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">39,795,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-1-0&quot;, &quot;شیائومی POCO C-series — C71 — ۶۴/۳ (Blk&amp;Blue)&quot;, 39795000)">+</button></td></tr><tr data-cap="low"><td>C71 — ۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">42,620,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-1-1&quot;, &quot;شیائومی POCO C-series — C71 — ۱۲۸/۴ (Blk)&quot;, 42620000)">+</button></td></tr><tr data-cap="low"><td>C81 Pro — ۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">52,395,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-1-2&quot;, &quot;شیائومی POCO C-series — C81 Pro — ۱۲۸/۴ (Blk)&quot;, 52395000)">+</button></td></tr><tr data-cap="mid"><td>C85 — ۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">55,020,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-1-3&quot;, &quot;شیائومی POCO C-series — C85 — ۲۵۶/۸ (Blk)&quot;, 55020000)">+</button></td></tr><tr data-cap="mid"><td>C85 — ۲۵۶/۸</td><td>سبز<span class="swatch" style="background:#5C8A63"></span>، بنفش<span class="swatch" style="background:#8E7CC3"></span></td><td class="price">54,495,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-1-4&quot;, &quot;شیائومی POCO C-series — C85 — ۲۵۶/۸ (Green&amp;V)&quot;, 54495000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="63945000" data-name="شیائومی redmi 13 / 15 / 15c">
+        <div class="visual" style="background:#FFE6D9">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#F4511E" stroke-width="2.4"></rect>
+    <rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="#F4511E" stroke-width="2.4"></rect><circle cx="75.5" cy="12" r="1.6" fill="#F4511E"></circle><circle cx="80.5" cy="12" r="1.6" fill="#F4511E"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Redmi 13 / 15 / 15C</div><div class="card-spec">رده میان‌پایه — دوربین اصلی تا ۱۰۸MP</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>15C — ۱۲۸/۴</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price na">ناموجود</td><td><button class="add-btn" disabled="" onclick="addToCart(&quot;xiaomi-2-0&quot;, &quot;شیائومی Redmi 13 / 15 / 15C — 15C — ۱۲۸/۴ (Blk)&quot;, 0)">—</button></td></tr><tr data-cap="mid"><td>15C — ۲۵۶/۸</td><td></td><td class="price na">ناموجود</td><td><button class="add-btn" disabled="" onclick="addToCart(&quot;xiaomi-2-1&quot;, &quot;شیائومی Redmi 13 / 15 / 15C — 15C — ۲۵۶/۸&quot;, 0)">—</button></td></tr><tr data-cap="low"><td>13 — ۱۲۸/۶</td><td>طلایی<span class="swatch" style="background:#C9A24B"></span></td><td class="price na">ناموجود</td><td><button class="add-btn" disabled="" onclick="addToCart(&quot;xiaomi-2-2&quot;, &quot;شیائومی Redmi 13 / 15 / 15C — 13 — ۱۲۸/۶ (Gold)&quot;, 0)">—</button></td></tr><tr data-cap="mid"><td>15 — ۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">63,945,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-2-3&quot;, &quot;شیائومی Redmi 13 / 15 / 15C — 15 — ۲۵۶/۸ (Blk)&quot;, 63945000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="68670000" data-name="شیائومی redmi note 14 / 14s">
+        <div class="visual" style="background:#FFE6D9">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#F4511E" stroke-width="2.4"></rect>
+    <rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="#F4511E" stroke-width="2.4"></rect><circle cx="75.5" cy="12" r="1.6" fill="#F4511E"></circle><circle cx="80.5" cy="12" r="1.6" fill="#F4511E"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Redmi Note 14 / 14S</div><div class="card-spec">AMOLED ۱۲۰Hz، دوربین ۱۰۸MP، بدنه ضدآب</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>Note14 — ۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">69,195,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-3-0&quot;, &quot;شیائومی Redmi Note 14 / 14S — Note14 — ۲۵۶/۸ (Blk&amp;Blue)&quot;, 69195000)">+</button></td></tr><tr data-cap="mid"><td>Note14 — ۲۵۶/۸</td><td>سبز<span class="swatch" style="background:#5C8A63"></span>، بنفش<span class="swatch" style="background:#8E7CC3"></span></td><td class="price">68,670,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-3-1&quot;, &quot;شیائومی Redmi Note 14 / 14S — Note14 — ۲۵۶/۸ (Green&amp;V)&quot;, 68670000)">+</button></td></tr><tr data-cap="mid"><td>Note14S — ۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">75,075,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-3-2&quot;, &quot;شیائومی Redmi Note 14 / 14S — Note14S — ۲۵۶/۸ (Blk)&quot;, 75075000)">+</button></td></tr><tr data-cap="mid"><td>Note14S — ۲۵۶/۸</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">74,025,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-3-3&quot;, &quot;شیائومی Redmi Note 14 / 14S — Note14S — ۲۵۶/۸ (Blue)&quot;, 74025000)">+</button></td></tr><tr data-cap="high"><td>Note14S — ۵۱۲/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">89,250,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-3-4&quot;, &quot;شیائومی Redmi Note 14 / 14S — Note14S — ۵۱۲/۱۲ (Blk)&quot;, 89250000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="72345000" data-name="شیائومی redmi note 15 / pro / pro plus">
+        <div class="visual" style="background:#FFE6D9">
+          <div class="badges"><span class="badge new">جدید</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#F4511E" stroke-width="2.4"></rect>
+    <rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="#F4511E" stroke-width="2.4"></rect><circle cx="75.5" cy="12" r="1.6" fill="#F4511E"></circle><circle cx="80.5" cy="12" r="1.6" fill="#F4511E"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">Redmi Note 15 / Pro / Pro Plus</div><div class="card-spec">AMOLED انحنادار، دوربین تا ۲۰۰MP</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>Note15 — ۲۵۶/۸</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">72,345,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-4-0&quot;, &quot;شیائومی Redmi Note 15 / Pro / Pro Plus — Note15 — ۲۵۶/۸ (Blk)&quot;, 72345000)">+</button></td></tr><tr data-cap="mid"><td>Note15 Pro — ۲۵۶/۸</td><td></td><td class="price">88,410,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-4-1&quot;, &quot;شیائومی Redmi Note 15 / Pro / Pro Plus — Note15 Pro — ۲۵۶/۸&quot;, 88410000)">+</button></td></tr><tr data-cap="mid"><td>Note15 Pro 5G — ۲۵۶/۱۲</td><td></td><td class="price">111,300,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-4-2&quot;, &quot;شیائومی Redmi Note 15 / Pro / Pro Plus — Note15 Pro 5G — ۲۵۶/۱۲&quot;, 111300000)">+</button></td></tr><tr data-cap="high"><td>Note15 Pro Plus — ۵۱۲/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price na">ناموجود</td><td><button class="add-btn" disabled="" onclick="addToCart(&quot;xiaomi-4-3&quot;, &quot;شیائومی Redmi Note 15 / Pro / Pro Plus — Note15 Pro Plus — ۵۱۲/۱۲ (Blk)&quot;, 0)">—</button></td></tr><tr data-cap="high"><td>Note15 Pro Plus — ۵۱۲/۱۲</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">147,000,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-4-4&quot;, &quot;شیائومی Redmi Note 15 / Pro / Pro Plus — Note15 Pro Plus — ۵۱۲/۱۲ (Blue)&quot;, 147000000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="99645000" data-name="شیائومی poco f6 / m8 pro">
+        <div class="visual" style="background:#FFE6D9">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#F4511E" stroke-width="2.4"></rect>
+    <rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="#F4511E" stroke-width="2.4"></rect><circle cx="75.5" cy="12" r="1.6" fill="#F4511E"></circle><circle cx="80.5" cy="12" r="1.6" fill="#F4511E"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">POCO F6 / M8 Pro</div><div class="card-spec">اسنپدراگون سری ۸، شارژ فوق‌سریع</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="high"><td>F6 — ۵۱۲/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">105,945,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-5-0&quot;, &quot;شیائومی POCO F6 / M8 Pro — F6 — ۵۱۲/۱۲ (Blk)&quot;, 105945000)">+</button></td></tr><tr data-cap="high"><td>F6 — ۵۱۲/۱۲</td><td>سبز<span class="swatch" style="background:#5C8A63"></span></td><td class="price">100,695,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-5-1&quot;, &quot;شیائومی POCO F6 / M8 Pro — F6 — ۵۱۲/۱۲ (Green)&quot;, 100695000)">+</button></td></tr><tr data-cap="high"><td>M8 Pro 5G — ۵۱۲/۱۲</td><td></td><td class="price">99,645,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-5-2&quot;, &quot;شیائومی POCO F6 / M8 Pro — M8 Pro 5G — ۵۱۲/۱۲&quot;, 99645000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="112350000" data-name="شیائومی poco x7 pro / mi 15t">
+        <div class="visual" style="background:#FFE6D9">
+          <div class="badges"><span class="badge best">پرفروش</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#F4511E" stroke-width="2.4"></rect>
+    <rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="#F4511E" stroke-width="2.4"></rect><circle cx="75.5" cy="12" r="1.6" fill="#F4511E"></circle><circle cx="80.5" cy="12" r="1.6" fill="#F4511E"></circle>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">POCO X7 Pro / Mi 15T</div><div class="card-spec">بالاترین رده، AMOLED ۱۴۴Hz، ۵G</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="high"><td>X7 Pro — ۵۱۲/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">115,500,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-6-0&quot;, &quot;شیائومی POCO X7 Pro / Mi 15T — X7 Pro — ۵۱۲/۱۲ (Blk)&quot;, 115500000)">+</button></td></tr><tr data-cap="high"><td>X7 Pro — ۵۱۲/۱۲</td><td>سبز<span class="swatch" style="background:#5C8A63"></span></td><td class="price">112,350,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-6-1&quot;, &quot;شیائومی POCO X7 Pro / Mi 15T — X7 Pro — ۵۱۲/۱۲ (Green)&quot;, 112350000)">+</button></td></tr><tr data-cap="high"><td>Mi 15T 5G — ۵۱۲/۱۲</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span></td><td class="price">177,450,000 <small>تومان</small></td><td><button class="add-btn" onclick="addToCart(&quot;xiaomi-6-2&quot;, &quot;شیائومی POCO X7 Pro / Mi 15T — Mi 15T 5G — ۵۱۲/۱۲ (Blk)&quot;, 177450000)">+</button></td></tr></tbody>
+          </table>
+        </div></div></div></div><div class="panel" id="panel-iphone"><div class="grid"><div class="card" data-minprice="225750000" data-name="اپل iphone 14">
+        <div class="visual" style="background:#F0F0F2">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1D1D1F" stroke-width="2.4"></rect>
+    <rect x="41" y="6" width="26" height="9" rx="4.5" fill="#1D1D1F"></rect>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">iPhone 14</div><div class="card-spec">۱۲۸GB، ۶.۱ اینچ، گارانتی شرکتی (نسخه چین)</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="low"><td>۱۲۸GB</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">225,750,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-0-0&quot;, &quot;اپل iPhone 14 — ۱۲۸GB (Blk&amp;W)&quot;, 225750000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="488250000" data-name="اپل iphone 16 pro max">
+        <div class="visual" style="background:#F0F0F2">
+          
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1D1D1F" stroke-width="2.4"></rect>
+    <rect x="41" y="6" width="26" height="9" rx="4.5" fill="#1D1D1F"></rect>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">iPhone 16 Pro Max</div><div class="card-spec">۱TB، A18 Pro، گارانتی ZAA</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="all"><td>۱TB</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">488,250,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-1-0&quot;, &quot;اپل iPhone 16 Pro Max — ۱TB (Blk&amp;W)&quot;, 488250000)">+</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="367395000" data-name="اپل iphone 17">
+        <div class="visual" style="background:#F0F0F2">
+          <div class="badges"><span class="badge new">جدید</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1D1D1F" stroke-width="2.4"></rect>
+    <rect x="41" y="6" width="26" height="9" rx="4.5" fill="#1D1D1F"></rect>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">iPhone 17</div><div class="card-spec">۲۵۶GB، پلمپ و نات (فعال‌نشده)</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>۲۵۶GB</td><td>مشکی<span class="swatch" style="background:#2A2E35"></span>، یاسی<span class="swatch" style="background:#B9A8D6"></span>، سبز<span class="swatch" style="background:#5C8A63"></span>، آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">367,395,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-2-0&quot;, &quot;اپل iPhone 17 — ۲۵۶GB (Blk&amp;Lav&amp;Green&amp;Blue)&quot;, 367395000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶GB</td><td>سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price na">ناموجود <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>بی‌کد</span></td><td><button class="add-btn" disabled="" onclick="addToCart(&quot;iphone-2-1&quot;, &quot;اپل iPhone 17 — ۲۵۶GB (W)&quot;, 0)">—</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="487200000" data-name="اپل iphone 17 pro">
+        <div class="visual" style="background:#F0F0F2">
+          <div class="badges"><span class="badge new">جدید</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1D1D1F" stroke-width="2.4"></rect>
+    <rect x="41" y="6" width="26" height="9" rx="4.5" fill="#1D1D1F"></rect>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">iPhone 17 Pro</div><div class="card-spec">بدنه تیتانیومی، دوربین سه‌گانه، پلمپ و نات</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>۲۵۶GB</td><td>سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">534,450,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-3-0&quot;, &quot;اپل iPhone 17 Pro — ۲۵۶GB (W)&quot;, 534450000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶GB</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">513,450,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-3-1&quot;, &quot;اپل iPhone 17 Pro — ۲۵۶GB (Blue)&quot;, 513450000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶GB</td><td>نارنجی<span class="swatch" style="background:#E08A3C"></span></td><td class="price">487,200,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-3-2&quot;, &quot;اپل iPhone 17 Pro — ۲۵۶GB (Oranj)&quot;, 487200000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶GB</td><td>سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price na">ناموجود <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>بی‌کد</span></td><td><button class="add-btn" disabled="" onclick="addToCart(&quot;iphone-3-3&quot;, &quot;اپل iPhone 17 Pro — ۲۵۶GB (W)&quot;, 0)">—</button></td></tr></tbody>
+          </table>
+        </div></div><div class="card" data-minprice="338100000" data-name="اپل iphone 17 pro max">
+        <div class="visual" style="background:#F0F0F2">
+          <div class="badges"><span class="badge best">پرفروش</span><span class="badge sale">تخفیف‌خورده</span></div>
+          <svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="#ffffff" stroke="#1D1D1F" stroke-width="2.4"></rect>
+    <rect x="41" y="6" width="26" height="9" rx="4.5" fill="#1D1D1F"></rect>
+  </svg>
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">iPhone 17 Pro Max</div><div class="card-spec">بزرگ‌ترین نمایشگر سری ۱۷، باتری بادوام</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody><tr data-cap="mid"><td>۲۵۶GB</td><td>سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">548,100,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-4-0&quot;, &quot;اپل iPhone 17 Pro Max — ۲۵۶GB (W)&quot;, 548100000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶GB</td><td>آبی<span class="swatch" style="background:#5B7FB5"></span></td><td class="price">533,400,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>شرکتی</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-4-1&quot;, &quot;اپل iPhone 17 Pro Max — ۲۵۶GB (Blue)&quot;, 533400000)">+</button></td></tr><tr data-cap="mid"><td>۲۵۶GB</td><td>سفید<span class="swatch" style="background:#F1F1F1"></span></td><td class="price">338,100,000 <small>تومان</small> <span class="tag"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"></path></svg>بی‌کد</span></td><td><button class="add-btn" onclick="addToCart(&quot;iphone-4-2&quot;, &quot;اپل iPhone 17 Pro Max — ۲۵۶GB (W)&quot;, 338100000)">+</button></td></tr></tbody>
+          </table>
+        </div></div></div></div></div></main>
+
+<footer>
+  <span>تلفن سفارش: <a class="phone-link" id="phoneLink" href="tel:+989354053871" data-number="09354053871">09354053871</a></span>
+  <span>فروشگاه موبایل یزدانی</span>
+  <button class="admin-btn" id="adminBtn" style="display: inline-block;" title="ویرایش قیمت‌ها">⚙️ ویرایش قیمت‌ها</button>
+</footer>
+
+<div class="admin-overlay" id="adminOverlay" aria-hidden="true">
+  <div class="admin-head">
+    <h2>ویرایش قیمت‌ها</h2>
+    <button class="cart-close" onclick="closeAdmin()" aria-label="بستن">✕</button>
+  </div>
+  <button class="addphone-toggle" id="addPhoneToggle" onclick="toggleAddPhoneForm()">+ افزودن گوشی جدید</button>
+  <div class="addphone-form" id="addPhoneForm">
+    <label>برند</label>
+    <select id="npBrand"><option value="samsung">سامسونگ</option><option value="xiaomi">شیائومی</option><option value="iphone">اپل</option></select>
+    <label>نام مدل (مثلاً Galaxy A08)</label>
+    <input type="text" id="npName" placeholder="نام مدل">
+    <label>مشخصات کوتاه</label>
+    <input type="text" id="npSpec" placeholder="مثلاً ۶.۷ اینچ، باتری ۵۰۰۰mAh">
+    <label>تنوع‌ها (حافظه، رنگ، قیمت)</label>
+    <div id="npVariants"></div>
+    <button type="button" class="add-variant-btn" onclick="addVariantRow()">+ افزودن تنوع دیگر</button>
+    <button type="button" class="addphone-submit" onclick="submitNewPhone()">افزودن به لیست</button>
+  </div>
+  <div class="admin-body" id="adminBody"><div class="admin-brand-title">سامسونگ</div><div class="admin-model-title">Galaxy S25 FE</div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blk&amp;Navi)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-0-0" value="173500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (W&amp;Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-0-1" value="177500" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy S26 Ultra</div><div class="admin-row"><span class="arow-label">۲۵۶/۱۲ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-1-0" value="365000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۱۲ (Blk&amp;W)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-1-1" value="207500" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A07</div><div class="admin-row"><span class="arow-label">۶۴/۴ (Blk&amp;V)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-2-0" value="34990" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۶۴/۴ (Green)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-2-1" value="34790" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۴ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-2-2" value="38890" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۴ (Green&amp;V)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-2-3" value="38590" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۶ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-2-4" value="43890" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۶ (V)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-2-5" value="43690" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۶ (Green)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-2-6" value="44900" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A16</div><div class="admin-row"><span class="arow-label">۱۲۸/۴ (Blk&amp;Gry)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-3-0" value="44800" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A17</div><div class="admin-row"><span class="arow-label">۱۲۸/۴ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-4-0" value="48490" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۴ (Blu&amp;Gry)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-4-1" value="48290" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۶ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-4-2" value="58190" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blk&amp;Gry)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-4-3" value="74790" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-4-4" value="74290" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A26 5G</div><div class="admin-row"><span class="arow-label">۱۲۸/۶ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-5-0" value="64190" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۶ (Pink&amp;W)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-5-1" value="64990" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-5-2" value="82400" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A27 5G</div><div class="admin-row"><span class="arow-label">۱۲۸/۶ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-6-0" value="74200" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blk&amp;Pink)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-6-1" value="94200" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A36 5G</div><div class="admin-row"><span class="arow-label">۱۲۸/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-7-0" value="82500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-7-1" value="93500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Yellw)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-7-2" value="92200" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A37 5G</div><div class="admin-row"><span class="arow-label">۱۲۸/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-8-0" value="88700" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۸ (W&amp;V)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-8-1" value="87500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blk&amp;W)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-8-2" value="98900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Green&amp;V)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-8-3" value="96900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۱۲ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-8-4" value="102900" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A56 5G</div><div class="admin-row"><span class="arow-label">۱۲۸/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-9-0" value="94500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۱۲۸/۸ (Green)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-9-1" value="93300" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-9-2" value="108900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۱۲ (Green)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-9-3" value="125000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۱۲ (Gry)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-9-4" value="119000" placeholder="ناموجود"></div><div class="admin-model-title">Galaxy A57 5G</div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Gry)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-10-0" value="127500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۸ (Lav&amp;Navi)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-10-1" value="125500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶/۱۲ (Gry)</span><input type="number" inputmode="numeric" min="0" id="padm-samsung-10-2" value="134900" placeholder="ناموجود"></div><div class="admin-brand-title">شیائومی</div><div class="admin-model-title">Redmi A3 / A5</div><div class="admin-row"><span class="arow-label">A3 — ۱۲۸/۴ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-0-0" value="36900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">A3 — ۱۲۸/۴ (Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-0-1" value="36600" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">A5 — ۶۴/۴ (Blk&amp;Gold)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-0-2" value="" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">A5 — ۱۲۸/۴ (Blk&amp;Green)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-0-3" value="41400" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">A5 — ۱۲۸/۴ (Blue&amp;Gold)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-0-4" value="41000" placeholder="ناموجود"></div><div class="admin-model-title">POCO C-series</div><div class="admin-row"><span class="arow-label">C71 — ۶۴/۳ (Blk&amp;Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-1-0" value="37900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">C71 — ۱۲۸/۴ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-1-1" value="40590" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">C81 Pro — ۱۲۸/۴ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-1-2" value="49900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">C85 — ۲۵۶/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-1-3" value="52400" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">C85 — ۲۵۶/۸ (Green&amp;V)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-1-4" value="51900" placeholder="ناموجود"></div><div class="admin-model-title">Redmi 13 / 15 / 15C</div><div class="admin-row"><span class="arow-label">15C — ۱۲۸/۴ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-2-0" value="" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">15C — ۲۵۶/۸</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-2-1" value="" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">13 — ۱۲۸/۶ (Gold)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-2-2" value="" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">15 — ۲۵۶/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-2-3" value="60900" placeholder="ناموجود"></div><div class="admin-model-title">Redmi Note 14 / 14S</div><div class="admin-row"><span class="arow-label">Note14 — ۲۵۶/۸ (Blk&amp;Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-3-0" value="65900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note14 — ۲۵۶/۸ (Green&amp;V)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-3-1" value="65400" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note14S — ۲۵۶/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-3-2" value="71500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note14S — ۲۵۶/۸ (Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-3-3" value="70500" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note14S — ۵۱۲/۱۲ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-3-4" value="85000" placeholder="ناموجود"></div><div class="admin-model-title">Redmi Note 15 / Pro / Pro Plus</div><div class="admin-row"><span class="arow-label">Note15 — ۲۵۶/۸ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-4-0" value="68900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note15 Pro — ۲۵۶/۸</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-4-1" value="84200" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note15 Pro 5G — ۲۵۶/۱۲</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-4-2" value="106000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note15 Pro Plus — ۵۱۲/۱۲ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-4-3" value="" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Note15 Pro Plus — ۵۱۲/۱۲ (Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-4-4" value="140000" placeholder="ناموجود"></div><div class="admin-model-title">POCO F6 / M8 Pro</div><div class="admin-row"><span class="arow-label">F6 — ۵۱۲/۱۲ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-5-0" value="100900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">F6 — ۵۱۲/۱۲ (Green)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-5-1" value="95900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">M8 Pro 5G — ۵۱۲/۱۲</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-5-2" value="94900" placeholder="ناموجود"></div><div class="admin-model-title">POCO X7 Pro / Mi 15T</div><div class="admin-row"><span class="arow-label">X7 Pro — ۵۱۲/۱۲ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-6-0" value="110000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">X7 Pro — ۵۱۲/۱۲ (Green)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-6-1" value="107000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">Mi 15T 5G — ۵۱۲/۱۲ (Blk)</span><input type="number" inputmode="numeric" min="0" id="padm-xiaomi-6-2" value="169000" placeholder="ناموجود"></div><div class="admin-brand-title">اپل</div><div class="admin-model-title">iPhone 14</div><div class="admin-row"><span class="arow-label">۱۲۸GB (Blk&amp;W)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-0-0" value="215000" placeholder="ناموجود"></div><div class="admin-model-title">iPhone 16 Pro Max</div><div class="admin-row"><span class="arow-label">۱TB (Blk&amp;W)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-1-0" value="465000" placeholder="ناموجود"></div><div class="admin-model-title">iPhone 17</div><div class="admin-row"><span class="arow-label">۲۵۶GB (Blk&amp;Lav&amp;Green&amp;Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-2-0" value="349900" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶GB (W)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-2-1" value="" placeholder="ناموجود"></div><div class="admin-model-title">iPhone 17 Pro</div><div class="admin-row"><span class="arow-label">۲۵۶GB (W)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-3-0" value="509000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶GB (Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-3-1" value="489000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶GB (Oranj)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-3-2" value="464000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶GB (W)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-3-3" value="" placeholder="ناموجود"></div><div class="admin-model-title">iPhone 17 Pro Max</div><div class="admin-row"><span class="arow-label">۲۵۶GB (W)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-4-0" value="522000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶GB (Blue)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-4-1" value="508000" placeholder="ناموجود"></div><div class="admin-row"><span class="arow-label">۲۵۶GB (W)</span><input type="number" inputmode="numeric" min="0" id="padm-iphone-4-2" value="322000" placeholder="ناموجود"></div></div>
+  <div class="admin-foot">
+    <button class="checkout-btn" id="saveAdminBtn" onclick="saveAdminPrices()">ذخیره و انتشار</button>
+    <div class="admin-note">فیلد خالی یعنی «ناموجود» — گوشی‌های تازه اضافه‌شده هم با همین دکمه ذخیره می‌شوند</div>
+  </div>
+</div>
+
+<div class="cart-backdrop" id="pwdBackdrop" onclick="closePwdModal()"></div>
+<div class="pwd-box" id="pwdBox" aria-hidden="true">
+  <h3>ورود به پنل ادمین</h3>
+  <input type="password" id="pwdInput" placeholder="رمز عبور" autocomplete="off">
+  <div class="pwd-actions">
+    <button class="pwd-cancel" type="button" onclick="closePwdModal()">انصراف</button>
+    <button class="pwd-submit" type="button" onclick="submitPwd()">ورود</button>
+  </div>
+</div>
+
+<button class="cart-fab" id="cartFab" onclick="openCart()" hidden="">
+  🛒 سبد خرید <span class="count" id="cartCount">0</span>
+</button>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span id="toastMsg">به سبد خرید اضافه شد</span></div>
+
+<div class="cart-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-head">
+    <h2>سبد خرید</h2>
+    <button class="cart-close" onclick="closeCart()" aria-label="بستن">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">سبد خرید خالی است</div></div>
+  <div class="cart-foot">
+    <div class="cart-total"><span>جمع کل</span><span id="cartTotal">0 تومان</span></div>
+    <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled="">ثبت سفارش در واتساپ</button>
+  </div>
+</aside>
+
+<script type="application/json" id="priceData">{"samsung":{"label":"سامسونگ","color":"#1428A0","soft":"#E7EAF7","icon":"<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"10\" y1=\"18.4\" x2=\"14\" y2=\"18.4\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>","models":[{"name":"Galaxy S25 FE","spec":"پرچم‌دار — Dynamic AMOLED 2X، دوربین حرفه‌ای","rows":[["۲۵۶/۸","Blk&Navi",173500,"ویتام"],["۲۵۶/۸","W&Blue",177500,"ویتام"]]},{"name":"Galaxy S26 Ultra","spec":"پرچم‌دار برتر — Dynamic AMOLED 2X، S Pen داخلی","rows":[["۲۵۶/۱۲","Blk",365000,"ویتام"],["۲۵۶/۱۲","Blk&W",207500,"بی‌کد"]]},{"name":"Galaxy A07","spec":"۶.۷ اینچ، دوربین ۵۰MP، باتری ۵۰۰۰mAh — اقتصادی‌ترین سری A","rows":[["۶۴/۴","Blk&V",34990],["۶۴/۴","Green",34790],["۱۲۸/۴","Blk",38890],["۱۲۸/۴","Green&V",38590],["۱۲۸/۶","Blk",43890],["۱۲۸/۶","V",43690],["۱۲۸/۶","Green",44900]]},{"name":"Galaxy A16","spec":"۶.۷ اینچ AMOLED، دوربین ۵۰MP، باتری ۵۰۰۰mAh","rows":[["۱۲۸/۴","Blk&Gry",44800]]},{"name":"Galaxy A17","spec":"AMOLED ۹۰Hz، دوربین سه‌گانه ۵۰MP، باتری ۵۰۰۰mAh","rows":[["۱۲۸/۴","Blk",48490],["۱۲۸/۴","Blu&Gry",48290],["۱۲۸/۶","Blk",58190],["۲۵۶/۸","Blk&Gry",74790],["۲۵۶/۸","Blue",74290]]},{"name":"Galaxy A26 5G","spec":"AMOLED، ۵G، دوربین ۵۰MP OIS، باتری ۵۰۰۰mAh","rows":[["۱۲۸/۶","Blk",64190],["۱۲۸/۶","Pink&W",64990],["۲۵۶/۸","Blk",82400]]},{"name":"Galaxy A27 5G","spec":"AMOLED، تراشه Exynos، دوربین ۵۰MP","rows":[["۱۲۸/۶","Blk",74200],["۲۵۶/۸","Blk&Pink",94200]]},{"name":"Galaxy A36 5G","spec":"IP67، دوربین ۵۰MP OIS، باتری ۵۰۰۰mAh","rows":[["۱۲۸/۸","Blk",82500],["۲۵۶/۸","Blk",93500],["۲۵۶/۸","Yellw",92200]]},{"name":"Galaxy A37 5G","spec":"AMOLED ۱۲۰Hz، دوربین ۵۰MP OIS، شارژ سریع","rows":[["۱۲۸/۸","Blk",88700],["۱۲۸/۸","W&V",87500],["۲۵۶/۸","Blk&W",98900],["۲۵۶/۸","Green&V",96900],["۲۵۶/۱۲","Blk",102900]]},{"name":"Galaxy A56 5G","spec":"بدنه فلزی، دوربین ۵۰MP OIS، AMOLED ۱۲۰Hz","rows":[["۱۲۸/۸","Blk",94500],["۱۲۸/۸","Green",93300],["۲۵۶/۸","Blk",108900],["۲۵۶/۱۲","Green",125000],["۲۵۶/۱۲","Gry",119000]]},{"name":"Galaxy A57 5G","spec":"بالاترین رده سری A، LTPO AMOLED","rows":[["۲۵۶/۸","Gry",127500],["۲۵۶/۸","Lav&Navi",125500],["۲۵۶/۱۲","Gry",134900]]}]},"xiaomi":{"label":"شیائومی","color":"#F4511E","soft":"#FFE6D9","icon":"<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"10\" y1=\"18.4\" x2=\"14\" y2=\"18.4\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>","models":[{"name":"Redmi A3 / A5","spec":"سری اقتصادی — نمایشگر ۶.۷، باتری ۵۰۰۰mAh","rows":[["A3 — ۱۲۸/۴","Blk",36900],["A3 — ۱۲۸/۴","Blue",36600],["A5 — ۶۴/۴","Blk&Gold",null],["A5 — ۱۲۸/۴","Blk&Green",41400],["A5 — ۱۲۸/۴","Blue&Gold",41000]]},{"name":"POCO C-series","spec":"C71 / C81 Pro / C85 — نمایشگر ۹۰Hz، باتری ۵۰۰۰mAh","rows":[["C71 — ۶۴/۳","Blk&Blue",37900],["C71 — ۱۲۸/۴","Blk",40590],["C81 Pro — ۱۲۸/۴","Blk",49900],["C85 — ۲۵۶/۸","Blk",52400],["C85 — ۲۵۶/۸","Green&V",51900]]},{"name":"Redmi 13 / 15 / 15C","spec":"رده میان‌پایه — دوربین اصلی تا ۱۰۸MP","rows":[["15C — ۱۲۸/۴","Blk",null],["15C — ۲۵۶/۸","",null],["13 — ۱۲۸/۶","Gold",null],["15 — ۲۵۶/۸","Blk",60900]]},{"name":"Redmi Note 14 / 14S","spec":"AMOLED ۱۲۰Hz، دوربین ۱۰۸MP، بدنه ضدآب","rows":[["Note14 — ۲۵۶/۸","Blk&Blue",65900],["Note14 — ۲۵۶/۸","Green&V",65400],["Note14S — ۲۵۶/۸","Blk",71500],["Note14S — ۲۵۶/۸","Blue",70500],["Note14S — ۵۱۲/۱۲","Blk",85000]]},{"name":"Redmi Note 15 / Pro / Pro Plus","spec":"AMOLED انحنادار، دوربین تا ۲۰۰MP","rows":[["Note15 — ۲۵۶/۸","Blk",68900],["Note15 Pro — ۲۵۶/۸","",84200],["Note15 Pro 5G — ۲۵۶/۱۲","",106000],["Note15 Pro Plus — ۵۱۲/۱۲","Blk",null],["Note15 Pro Plus — ۵۱۲/۱۲","Blue",140000]]},{"name":"POCO F6 / M8 Pro","spec":"اسنپدراگون سری ۸، شارژ فوق‌سریع","rows":[["F6 — ۵۱۲/۱۲","Blk",100900],["F6 — ۵۱۲/۱۲","Green",95900],["M8 Pro 5G — ۵۱۲/۱۲","",94900]]},{"name":"POCO X7 Pro / Mi 15T","spec":"بالاترین رده، AMOLED ۱۴۴Hz، ۵G","rows":[["X7 Pro — ۵۱۲/۱۲","Blk",110000],["X7 Pro — ۵۱۲/۱۲","Green",107000],["Mi 15T 5G — ۵۱۲/۱۲","Blk",169000]]}]},"iphone":{"label":"اپل","color":"#FFFFFF","iconColor":"#1D1D1F","textOn":"#1D1D1F","soft":"#F0F0F2","icon":"<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"2.6\" stroke=\"currentColor\" stroke-width=\"1.6\"/><line x1=\"10\" y1=\"18.4\" x2=\"14\" y2=\"18.4\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"/></svg>","models":[{"name":"iPhone 14","spec":"۱۲۸GB، ۶.۱ اینچ، گارانتی شرکتی (نسخه چین)","rows":[["۱۲۸GB","Blk&W",215000,"شرکتی"]]},{"name":"iPhone 16 Pro Max","spec":"۱TB، A18 Pro، گارانتی ZAA","rows":[["۱TB","Blk&W",465000,"شرکتی"]]},{"name":"iPhone 17","spec":"۲۵۶GB، پلمپ و نات (فعال‌نشده)","rows":[["۲۵۶GB","Blk&Lav&Green&Blue",349900,"شرکتی"],["۲۵۶GB","W",null,"بی‌کد"]]},{"name":"iPhone 17 Pro","spec":"بدنه تیتانیومی، دوربین سه‌گانه، پلمپ و نات","rows":[["۲۵۶GB","W",509000,"شرکتی"],["۲۵۶GB","Blue",489000,"شرکتی"],["۲۵۶GB","Oranj",464000,"شرکتی"],["۲۵۶GB","W",null,"بی‌کد"]]},{"name":"iPhone 17 Pro Max","spec":"بزرگ‌ترین نمایشگر سری ۱۷، باتری بادوام","rows":[["۲۵۶GB","W",522000,"شرکتی"],["۲۵۶GB","Blue",508000,"شرکتی"],["۲۵۶GB","W",322000,"بی‌کد"]]}]}}</script>
+<script>
+let brands = JSON.parse(document.getElementById("priceData").textContent);
+
+const colorNames = {Blk:"مشکی", Green:"سبز", V:"بنفش", Gry:"طوسی", Blu:"آبی", Blue:"آبی", Pink:"صورتی", W:"سفید", Yellw:"زرد", Lav:"یاسی", Navi:"سرمه‌ای", Gold:"طلایی", Oranj:"نارنجی", Red:"قرمز"};
+const swatchHex = {Blk:"#2A2E35", Green:"#5C8A63", V:"#8E7CC3", Gry:"#9AA0AC", Blu:"#5B7FB5", Blue:"#5B7FB5", Pink:"#E3A9C0", W:"#F1F1F1", Yellw:"#E8D26A", Lav:"#B9A8D6", Navi:"#2E3A5C", Gold:"#C9A24B", Oranj:"#E08A3C", Red:"#B23C3C"};
+function chips(codes){ if(!codes) return ""; return codes.split("&").map(c=>`${colorNames[c]||c}<span class="swatch" style="background:${swatchHex[c]||'#ccc'}"></span>`).join("، "); }
+function realPrice(p){ if(p===null) return null; return p*1000; }
+const guaranteeIcon = `<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8"/></svg>`;
+function priceHtml(p, tag){
+  const rp = realPrice(p);
+  if(rp===null) return `<td class="price na">ناموجود${tag?` <span class="tag">${guaranteeIcon}${tag}</span>`:""}</td>`;
+  return `<td class="price">${rp.toLocaleString('en-US')} <small>تومان</small>${tag?` <span class="tag">${guaranteeIcon}${tag}</span>`:""}</td>`;
+}
+
+// ---- badges & bestsellers ----
+const badgeMap = {
+  "iPhone 17 Pro Max":["best"], "iPhone 17 Pro":["new"], "iPhone 17":["new"],
+  "Galaxy S26 Ultra":["best"], "Galaxy A27 5G":["new"], "Galaxy A37 5G":["new"],
+  "Redmi Note 15 / Pro / Pro Plus":["new"], "POCO X7 Pro / Mi 15T":["best"],
+};
+function getBadges(m){
+  const b = (badgeMap[m.name]||[]).slice();
+  if(m.rows.some(r=>r[3]==="بی‌کد" && r[2]!==null)) b.push("sale");
+  return b;
+}
+const badgeLabel = {best:"پرفروش", new:"جدید", sale:"تخفیف‌خورده"};
+
+function toLatin(str){ return (str||"").replace(/[۰-۹]/g, d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)); }
+function parseCap(row){
+  const nums = (toLatin(row[0]).match(/\d{2,4}/g)||[]).map(Number);
+  if(nums.length===0) return 0;
+  return Math.max(...nums.filter(n=>[64,128,256,512,1024].includes(n)).concat([0])) || Math.max(...nums);
+}
+function capBucket(n){ if(n>=512) return "high"; if(n>=256) return "mid"; if(n>0) return "low"; return "all"; }
+
+function phoneVisual(key, color, soft){
+  const notch = key==="iphone"
+    ? `<rect x="41" y="6" width="26" height="9" rx="4.5" fill="${color}"/>`
+    : key==="samsung"
+    ? `<circle cx="54" cy="11" r="3.4" fill="${color}"/>`
+    : `<rect x="70" y="6" width="16" height="12" rx="4" fill="none" stroke="${color}" stroke-width="2.4"/><circle cx="75.5" cy="12" r="1.6" fill="${color}"/><circle cx="80.5" cy="12" r="1.6" fill="${color}"/>`;
+  return `<svg viewBox="0 0 108 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="4" width="92" height="192" rx="20" fill="${soft}" stroke="${color}" stroke-width="2.4"/>
+    ${notch}
+  </svg>`;
+}
+
+const tabsEl = document.getElementById("tabs");
+const panelsEl = document.getElementById("panels");
+const bsRow = document.getElementById("bsRow");
+const bsPicks = [{key:"iphone",mi:4},{key:"samsung",mi:1},{key:"xiaomi",mi:6}];
+let keys = Object.keys(brands);
+
+function buildCatalog(){
+  keys = Object.keys(brands);
+  tabsEl.innerHTML = "";
+  panelsEl.innerHTML = "";
+  bsRow.innerHTML = "";
+
+  keys.forEach((key, i)=>{
+    const b = brands[key];
+    const textOn = b.textOn || "#fff";
+    const btn = document.createElement("button");
+    btn.setAttribute("aria-selected", i===0 ? "true":"false");
+    if(b.color.toLowerCase()==="#ffffff") btn.dataset.white = "true";
+    btn.style.background = i===0 ? b.color : "";
+    btn.style.color = i===0 ? textOn : "";
+    btn.style.borderColor = i===0 ? b.color : "";
+    btn.innerHTML = `<span class="dot" style="background:${i===0?textOn:b.color}"></span>${b.label}`;
+    btn.onclick = ()=> selectTab(key);
+    tabsEl.appendChild(btn);
+
+    const panel = document.createElement("div");
+    panel.className = "panel" + (i===0 ? " active":"");
+    panel.id = "panel-"+key;
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    b.models.forEach((m, mi)=>{
+      const prices = m.rows.map(r=>realPrice(r[2])).filter(p=>p!==null);
+      const minP = prices.length? Math.min(...prices) : Infinity;
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.minprice = minP;
+      card.dataset.name = (b.label+" "+m.name).toLowerCase();
+      const badges = getBadges(m);
+      card.innerHTML = `
+        <div class="visual" style="background:${b.soft}">
+          ${badges.length?`<div class="badges">${badges.map(x=>`<span class="badge ${x}">${badgeLabel[x]}</span>`).join("")}</div>`:""}
+          ${phoneVisual(key, b.iconColor||b.color, "#ffffff")}
+        </div>
+        <div class="card-body">
+          <div><div class="card-title">${m.name}</div><div class="card-spec">${m.spec}</div></div>
+          <table>
+            <thead><tr><th>مدل/حافظه</th><th>رنگ</th><th>قیمت</th><th></th></tr></thead>
+            <tbody>${m.rows.map((r,ri)=>{
+              const pid = key+"-"+mi+"-"+ri;
+              const rowLabel = r[1] ? r[0]+" ("+r[1]+")" : r[0];
+              const fullName = b.label+" "+m.name+" — "+rowLabel;
+              const na = r[2]===null;
+              const cap = capBucket(parseCap(r));
+              return `<tr data-cap="${cap}"><td>${r[0]}</td><td>${chips(r[1])}</td>${priceHtml(r[2], r[3])}<td><button class="add-btn" ${na?"disabled":""} onclick='addToCart(${JSON.stringify(pid)}, ${JSON.stringify(fullName)}, ${na?0:realPrice(r[2])})'>${na?"—":"+"}</button></td></tr>`;
+            }).join("")}</tbody>
+          </table>
+        </div>`;
+      grid.appendChild(card);
+    });
+    panel.appendChild(grid);
+    panelsEl.appendChild(panel);
+  });
+
+  bsRow.innerHTML = "";
+  bsPicks.forEach(p=>{
+    try{
+      const b = brands[p.key]; const m = b.models[p.mi];
+      if(!m) return;
+      const prices = m.rows.map(r=>realPrice(r[2])).filter(x=>x!==null);
+      const minP = prices.length? Math.min(...prices):null;
+      const card = document.createElement("div");
+      card.className = "bs-card";
+      card.innerHTML = `<div class="bs-badge">پرفروش</div><div class="card-spec" style="font-size:.68rem">${b.label}</div><div class="bs-name">${m.name}</div><div class="bs-price">${minP?("از "+minP.toLocaleString('en-US')+" تومان"):"—"}</div>`;
+      card.onclick = ()=> selectTab(p.key);
+      bsRow.appendChild(card);
+    }catch(e){ console.error("bestseller card failed", p, e); }
+  });
+}
+
+buildCatalog();
+
+async function loadLivePrices(){
+  try{
+    const res = await fetch("/api/prices", {cache:"no-store"});
+    if(!res.ok) return; // endpoint not deployed yet — keep the embedded fallback prices
+    const data = await res.json();
+    if(data && Object.keys(data).length){
+      brands = data;
+      document.getElementById("priceData").textContent = JSON.stringify(brands);
+      buildCatalog();
+      selectTab(keys[0], true);
+      applyFilters();
+    }
+  }catch(e){ /* offline or endpoint missing — keep the embedded fallback prices */ }
+}
+loadLivePrices();
+
+function selectTab(key, skipScroll){
+  keys.forEach((k,i)=>{
+    const b = brands[k];
+    const textOn = b.textOn || "#fff";
+    const btn = tabsEl.children[i];
+    const active = k===key;
+    btn.setAttribute("aria-selected", active);
+    btn.style.background = active ? b.color : "";
+    btn.style.color = active ? textOn : "";
+    btn.style.borderColor = active ? b.color : "";
+    btn.querySelector(".dot").style.background = active ? textOn : b.color;
+    document.getElementById("panel-"+k).classList.toggle("active", active);
+  });
+  applyFilters();
+  if(!skipScroll) document.getElementById("tabs").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+/* ---------- search / sort / memory filter ---------- */
+function applyFilters(){
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+  const sortMode = document.getElementById("sortSel").value;
+  const mem = document.querySelector('.memchip[aria-pressed="true"]').dataset.mem;
+  const panel = document.querySelector(".panel.active");
+  if(!panel) return;
+  const cards = Array.from(panel.querySelectorAll(".card"));
+
+  cards.forEach(card=>{
+    const matchesText = !q || card.dataset.name.includes(q);
+    let anyRowVisible = false;
+    card.querySelectorAll("tbody tr").forEach(tr=>{
+      const capOk = mem==="all" || tr.dataset.cap===mem || tr.dataset.cap==="all";
+      tr.classList.toggle("hidden-row", !capOk);
+      if(capOk) anyRowVisible = true;
+    });
+    card.style.display = (matchesText && anyRowVisible) ? "" : "none";
+  });
+
+  if(sortMode!=="default"){
+    const grid = panel.querySelector(".grid");
+    const visible = cards.filter(c=>c.style.display!=="none");
+    visible.sort((a,b)=> sortMode==="asc"
+      ? a.dataset.minprice - b.dataset.minprice
+      : b.dataset.minprice - a.dataset.minprice);
+    visible.forEach(c=>grid.appendChild(c));
+  }
+}
+document.getElementById("searchInput").addEventListener("input", applyFilters);
+document.getElementById("sortSel").addEventListener("change", applyFilters);
+document.querySelectorAll(".memchip").forEach(chip=>{
+  chip.onclick = ()=>{
+    document.querySelectorAll(".memchip").forEach(c=>c.setAttribute("aria-pressed", c===chip));
+    applyFilters();
+  };
+});
+
+/* ---------- cart ---------- */
+const STORAGE_KEY = "yazdani-cart-v1";
+let cart = [];
+try{ const saved = localStorage.getItem(STORAGE_KEY); cart = saved ? JSON.parse(saved) : []; }catch(e){ cart = []; }
+function saveCart(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }catch(e){} }
+
+document.getElementById("phoneLink").addEventListener("click", function(e){
+  const number = this.dataset.number;
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(number).then(()=>showToast("شماره کپی شد")).catch(()=>{});
+  }
+  // tel: link still runs by default so on mobile it opens the dialer app
+});
+
+let toastTimer = null;
+function showToast(msg){
+  const t = document.getElementById("toast");
+  document.getElementById("toastMsg").textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove("show"), 1800);
+}
+
+function addToCart(id, name, price){
+  const item = cart.find(i=>i.id===id);
+  if(item){ item.qty += 1; } else { cart.push({id, name, price, qty:1}); }
+  saveCart(); renderCart(); showToast("به سبد خرید اضافه شد");
+}
+function changeQty(id, delta){
+  const item = cart.find(i=>i.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty<=0) cart = cart.filter(i=>i.id!==id);
+  saveCart(); renderCart();
+}
+function removeItem(id){ cart = cart.filter(i=>i.id!==id); saveCart(); renderCart(); }
+function cartTotal(){ return cart.reduce((s,i)=>s+i.price*i.qty, 0); }
+function fmtToman(n){ return n.toLocaleString('en-US') + " تومان"; }
+
+function renderCart(){
+  const itemsEl = document.getElementById("cartItems");
+  const fab = document.getElementById("cartFab");
+  const count = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById("cartCount").textContent = count;
+  fab.hidden = count===0;
+  if(cart.length===0){
+    itemsEl.innerHTML = `<div class="cart-empty">سبد خرید خالی است</div>`;
+  }else{
+    itemsEl.innerHTML = cart.map(i=>`
+      <div class="cart-item">
+        <div><div class="ci-name">${i.name}</div><div class="ci-price">${fmtToman(i.price)}</div></div>
+        <div class="qty"><button onclick="changeQty('${i.id}',-1)">−</button><span>${i.qty}</span><button onclick="changeQty('${i.id}',1)">+</button></div>
+      </div>`).join("");
+  }
+  document.getElementById("cartTotal").textContent = fmtToman(cartTotal());
+  document.getElementById("checkoutBtn").disabled = cart.length===0;
+}
+function openCart(){
+  document.getElementById("cartDrawer").classList.add("open");
+  document.getElementById("cartBackdrop").classList.add("open");
+  document.getElementById("cartDrawer").setAttribute("aria-hidden","false");
+}
+function closeCart(){
+  document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("cartBackdrop").classList.remove("open");
+  document.getElementById("cartDrawer").setAttribute("aria-hidden","true");
+}
+function checkout(){
+  if(cart.length===0) return;
+  const lines = cart.map(i=>`• ${i.name} × ${i.qty} — ${fmtToman(i.price*i.qty)}`).join("\n");
+  const msg = `سلام، می‌خوام این سفارش رو ثبت کنم:\n\n${lines}\n\nجمع کل: ${fmtToman(cartTotal())}`;
+  const url = "https://wa.me/989354053871?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
+}
+renderCart();
+
+/* ---------- admin: live price editing ---------- */
+function buildAdminBody(){
+  const body = document.getElementById("adminBody");
+  body.innerHTML = "";
+  keys.forEach(key=>{
+    const b = brands[key];
+    const bTitle = document.createElement("div");
+    bTitle.className = "admin-brand-title";
+    bTitle.textContent = b.label;
+    body.appendChild(bTitle);
+    b.models.forEach((m, mi)=>{
+      const mTitle = document.createElement("div");
+      mTitle.className = "admin-model-title";
+      mTitle.textContent = m.name;
+      body.appendChild(mTitle);
+      m.rows.forEach((r, ri)=>{
+        const row = document.createElement("div");
+        row.className = "admin-row";
+        const label = r[1] ? `${r[0]} (${r[1]})` : r[0];
+        const val = r[2]===null ? "" : r[2];
+        row.innerHTML = `<span class="arow-label">${label}</span><input type="number" inputmode="numeric" min="0" id="padm-${key}-${mi}-${ri}" value="${val}" placeholder="ناموجود">`;
+        body.appendChild(row);
+      });
+    });
+  });
+}
+
+function toggleAddPhoneForm(){
+  const f = document.getElementById("addPhoneForm");
+  f.classList.toggle("open");
+  if(f.classList.contains("open") && !document.getElementById("npVariants").children.length){
+    addVariantRow();
+  }
+}
+function addVariantRow(){
+  const wrap = document.getElementById("npVariants");
+  const row = document.createElement("div");
+  row.className = "variant-row";
+  row.innerHTML = `<input type="text" placeholder="حافظه/رم" class="np-storage"><input type="text" placeholder="رنگ" class="np-color"><input type="number" inputmode="numeric" min="0" placeholder="قیمت (هزار تومان)" class="np-price"><button type="button" class="rm-variant" onclick="this.parentElement.remove()">✕</button>`;
+  wrap.appendChild(row);
+}
+function submitNewPhone(){
+  const key = document.getElementById("npBrand").value;
+  const name = document.getElementById("npName").value.trim();
+  const spec = document.getElementById("npSpec").value.trim();
+  if(!key || !name){ showToast("برند و نام مدل رو پر کن"); return; }
+  const rows = [];
+  document.querySelectorAll("#npVariants .variant-row").forEach(r=>{
+    const storage = r.querySelector(".np-storage").value.trim();
+    const color = r.querySelector(".np-color").value.trim();
+    const priceVal = r.querySelector(".np-price").value.trim();
+    if(!storage) return;
+    rows.push([storage, color, priceVal===""?null:Number(priceVal)]);
+  });
+  if(rows.length===0){ showToast("حداقل یک تنوع (حافظه) وارد کن"); return; }
+  brands[key].models.push({name, spec, rows});
+  document.getElementById("npName").value = "";
+  document.getElementById("npSpec").value = "";
+  document.getElementById("npVariants").innerHTML = "";
+  addVariantRow();
+  document.getElementById("addPhoneForm").classList.remove("open");
+  buildAdminBody();
+  showToast("گوشی به لیست اضافه شد — حالا ذخیره کن");
+}
+function openAdmin(){
+  const sel = document.getElementById("npBrand");
+  sel.innerHTML = keys.map(k=>`<option value="${k}">${brands[k].label}</option>`).join("");
+  buildAdminBody();
+  const ov = document.getElementById("adminOverlay");
+  ov.classList.add("open");
+  ov.setAttribute("aria-hidden","false");
+}
+function closeAdmin(){
+  const ov = document.getElementById("adminOverlay");
+  ov.classList.remove("open");
+  ov.setAttribute("aria-hidden","true");
+}
+const ADMIN_PASSWORD = "@Admin9004259";
+
+function openPwdModal(){
+  const inp = document.getElementById("pwdInput");
+  inp.value = "";
+  document.getElementById("pwdBackdrop").classList.add("open");
+  document.getElementById("pwdBox").classList.add("open");
+  document.getElementById("pwdBox").setAttribute("aria-hidden","false");
+  setTimeout(()=>inp.focus(), 50);
+}
+function closePwdModal(){
+  document.getElementById("pwdBackdrop").classList.remove("open");
+  document.getElementById("pwdBox").classList.remove("open");
+  document.getElementById("pwdBox").setAttribute("aria-hidden","true");
+}
+function submitPwd(){
+  const pass = document.getElementById("pwdInput").value;
+  closePwdModal();
+  if(pass === "") return;
+  if(pass === ADMIN_PASSWORD){ openAdmin(); }
+  else { showToast("رمز اشتباه است"); }
+}
+document.getElementById("pwdInput").addEventListener("keydown", (e)=>{
+  if(e.key === "Enter"){ e.preventDefault(); submitPwd(); }
+  if(e.key === "Escape"){ closePwdModal(); }
+});
+document.getElementById("adminBtn").addEventListener("click", openPwdModal);
+
+function toJalali(gy, gm, gd){
+  const g_d_m = [0,31,59,90,120,151,181,212,243,273,304,334];
+  let jy = (gy <= 1600) ? 0 : 979;
+  gy -= (gy <= 1600) ? 621 : 1600;
+  const gy2 = (gm > 2) ? (gy + 1) : gy;
+  let days = (365*gy) + Math.floor((gy2+3)/4) - Math.floor((gy2+99)/100) + Math.floor((gy2+399)/400) - 80 + gd + g_d_m[gm-1];
+  jy += 33*Math.floor(days/12053); days %= 12053;
+  jy += 4*Math.floor(days/1461); days %= 1461;
+  jy += Math.floor((days-1)/365); if(days>365) days = (days-1)%365;
+  const jm = (days < 186) ? 1+Math.floor(days/31) : 7+Math.floor((days-186)/30);
+  const jd = 1 + ((days < 186) ? (days%31) : ((days-186)%30));
+  return [jy, jm, jd];
+}
+function todayJalaliStr(){
+  const now = new Date();
+  const [jy, jm, jd] = toJalali(now.getFullYear(), now.getMonth()+1, now.getDate());
+  const p2 = n => String(n).padStart(2,"0");
+  return `${jy}/${p2(jm)}/${p2(jd)}`;
+}
+async function saveAdminPrices(){
+  keys.forEach(key=>{
+    const b = brands[key];
+    b.models.forEach((m, mi)=>{
+      m.rows.forEach((r, ri)=>{
+        const inp = document.getElementById(`padm-${key}-${mi}-${ri}`);
+        if(!inp) return;
+        const v = inp.value.trim();
+        r[2] = v==="" ? null : Number(v);
+      });
+    });
+  });
+
+  document.getElementById("priceData").textContent = JSON.stringify(brands);
+  document.getElementById("lastUpdate").textContent = todayJalaliStr();
+  buildCatalog();
+  selectTab(keys[0], true);
+  document.getElementById("searchInput").value = "";
+  document.getElementById("sortSel").value = "default";
+  document.querySelectorAll(".memchip").forEach(c=>c.setAttribute("aria-pressed", c.dataset.mem==="all"));
+  applyFilters();
+  closeAdmin();
+
+  const saveBtn = document.getElementById("saveAdminBtn");
+  const originalLabel = saveBtn.textContent;
+  saveBtn.disabled = true;
+  saveBtn.textContent = "در حال ذخیره...";
+  try{
+    const timeout = new Promise((_, rej) => setTimeout(()=>rej(new Error("timeout")), 15000));
+    const res = await Promise.race([
+      fetch("/api/prices", {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-admin-secret": ADMIN_PASSWORD },
+        body: JSON.stringify(brands)
+      }),
+      timeout
+    ]);
+    if(res.status === 401){ showToast("رمز سرور با رمز پنل یکی نیست — ADMIN_SECRET رو چک کن"); return; }
+    if(!res.ok){ throw new Error("http " + res.status); }
+    showToast("قیمت‌ها ذخیره شد");
+  }catch(e){
+    console.error("save failed:", e);
+    showToast(e && e.message==="timeout" ? "ذخیره طول کشید — دوباره امتحان کن" : "ذخیره ناموفق بود، دوباره امتحان کنید");
+  }finally{
+    saveBtn.disabled = false;
+    saveBtn.textContent = originalLabel;
+  }
+}
+</script>
+
+
+</body></html>
